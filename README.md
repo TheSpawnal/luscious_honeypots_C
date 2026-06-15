@@ -1,3 +1,5 @@
+## MOAT AND SMOKE
+
 A low-interaction honeypot — the only kind you should ever expose to the open dark. It presents convincing decoy banners (SSH, Telnet, HTTP, plus a silent generic capture port), swallows everything the attacker sends, and bleeds structured JSON-Lines telemetry. It never spawns a shell, never executes attacker input, never reflects raw bytes into the log. The goblin gets a hollow puppet and a recording booth; you get his every keystroke.
 The architecture is the modern one: a single-threaded epoll event loop (the way nginx scales, not the old thread-per-connection swamp), with non-blocking I/O, timerfd-driven timeout sweeps, signalfd-integrated clean shutdown, and optional SO_REUSEPORT multi-worker scaling via fork + EPOLLEXCLUSIVE. One process, thousands of trapped sessions, bounded memory.
 The security decisions that matter
